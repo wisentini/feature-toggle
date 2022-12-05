@@ -1,0 +1,18 @@
+package br.dev.wisentini.featuretoggle.dto.user;
+
+import lombok.*;
+
+import javax.validation.constraints.Size;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserUpdateDTO {
+
+    @Size(min = 1, max = 255, message = "Name must be between 1 and 255 characters long.")
+    private String name;
+
+    @Size(min = 1, max = 255, message = "Password must be between 1 and 255 characters long.")
+    private String password;
+}
