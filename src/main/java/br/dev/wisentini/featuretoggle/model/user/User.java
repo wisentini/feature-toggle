@@ -1,12 +1,13 @@
 package br.dev.wisentini.featuretoggle.model.user;
 
 import lombok.*;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity(name = "user")
 @Table(name = "user", schema = "public")
@@ -31,9 +32,9 @@ public class User {
 
     @CreatedDate
     @Column(name = "created_at", insertable = false, updatable = false, nullable = false)
-    private Date createdAt;
+    private LocalDate createdAt;
 
     @LastModifiedDate
     @Column(name = "updated_at")
-    private Date updatedAt;
+    private LocalDate updatedAt;
 }
