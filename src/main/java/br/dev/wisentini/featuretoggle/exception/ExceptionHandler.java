@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.validation.ConstraintViolationException;
 
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
