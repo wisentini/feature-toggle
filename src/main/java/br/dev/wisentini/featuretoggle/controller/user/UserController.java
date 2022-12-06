@@ -45,7 +45,7 @@ public class UserController {
     @PatchMapping(value = "/{id}")
     @ResponseStatus(value = HttpStatus.CREATED)
     public void update(@PathVariable("id") int id, @Valid @RequestBody UserUpdateDTO userUpdateDTO) {
-        this.userService.update(id,  userUpdateDTO);
+        this.userService.update(id, userUpdateDTO);
     }
 
     @DeleteMapping(value = "/{id}")
