@@ -23,4 +23,8 @@ public class ErrorResponse {
     public ErrorResponse(Set<Error> errors, HttpStatus status) {
         this(errors, status, LocalDateTime.now());
     }
+
+    public ErrorResponse(Error error, HttpStatus status) {
+        this(Set.of(error), status);
+    }
 }

@@ -26,7 +26,7 @@ public class ExceptionHandler {
         HttpStatus status = HttpStatus.NOT_FOUND;
 
         ErrorResponse errorResponse = new ErrorResponse(
-            Set.of(new Error(resourceNotFoundException.getMessage())),
+            new Error(resourceNotFoundException.getMessage()),
             status
         );
 
@@ -41,7 +41,7 @@ public class ExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         ErrorResponse errorResponse = new ErrorResponse(
-            Set.of(new Error(missingAttributesException.getMessage())),
+            new Error(missingAttributesException.getMessage()),
             status
         );
 
@@ -113,10 +113,10 @@ public class ExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         ErrorResponse errorResponse = new ErrorResponse(
-            Set.of(new ValidationError(
+            new ValidationError(
                 Objects.requireNonNull(conversionFailedException.getValue()).toString(),
                 conversionFailedException.getCause().getMessage()
-            )),
+            ),
             status
         );
 
@@ -131,7 +131,7 @@ public class ExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         ErrorResponse errorResponse = new ErrorResponse(
-            Set.of(new Error(httpMessageNotReadableException.getMessage())),
+            new Error(httpMessageNotReadableException.getMessage()),
             status
         );
 
