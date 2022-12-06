@@ -3,7 +3,7 @@ package br.dev.wisentini.featuretoggle.service.user;
 import br.dev.wisentini.featuretoggle.dto.user.UserCreationDTO;
 import br.dev.wisentini.featuretoggle.dto.user.UserRetrievalDTO;
 import br.dev.wisentini.featuretoggle.dto.user.UserUpdateDTO;
-import br.dev.wisentini.featuretoggle.exception.MissingAttributesException;
+import br.dev.wisentini.featuretoggle.exception.MissingFieldsException;
 import br.dev.wisentini.featuretoggle.exception.ResourceNotFoundException;
 import br.dev.wisentini.featuretoggle.mapper.user.UserMapper;
 import br.dev.wisentini.featuretoggle.model.user.User;
@@ -57,7 +57,7 @@ public class UserService {
 
         if (userUpdateDTO.getName() == null && userUpdateDTO.getPassword() == null) {
             String message = "A name, password or both must be provided in order to update a user.";
-            throw new MissingAttributesException(message);
+            throw new MissingFieldsException(message);
         }
 
         User oldUser = response.get();

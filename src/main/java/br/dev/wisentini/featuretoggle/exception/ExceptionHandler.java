@@ -32,15 +32,15 @@ public class ExceptionHandler {
         return new ResponseEntity<>(errorResponse, status);
     }
 
-    @org.springframework.web.bind.annotation.ExceptionHandler(value = {MissingAttributesException.class})
+    @org.springframework.web.bind.annotation.ExceptionHandler(value = {MissingFieldsException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ResponseEntity<Object> handleNoArgumentException(
-        MissingAttributesException missingAttributesException
+        MissingFieldsException missingFieldsException
     ) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         ErrorResponse errorResponse = new ErrorResponse(
-            new Error(missingAttributesException.getMessage()),
+            new Error(missingFieldsException.getMessage()),
             status
         );
 

@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-public class MissingAttributesException extends RuntimeException {
+public class MissingFieldsException extends RuntimeException {
 
-    public MissingAttributesException(String message) {
+    public MissingFieldsException(String message) {
         super(message);
     }
 }
