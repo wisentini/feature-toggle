@@ -2,9 +2,6 @@ package br.dev.wisentini.featuretoggle.model.user;
 
 import lombok.*;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.*;
 
 import java.time.LocalDate;
@@ -30,11 +27,9 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @CreatedDate
     @Column(name = "created_at", insertable = false, updatable = false, nullable = false)
     private LocalDate createdAt;
 
-    @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDate updatedAt;
 }
