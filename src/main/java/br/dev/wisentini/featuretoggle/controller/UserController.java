@@ -5,7 +5,8 @@ import br.dev.wisentini.featuretoggle.dto.UserRetrievalDTO;
 import br.dev.wisentini.featuretoggle.dto.UserUpdateDTO;
 import br.dev.wisentini.featuretoggle.service.UserService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,14 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/user")
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
-
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping(value = "/{id}")
     @ResponseStatus(value = HttpStatus.OK)
