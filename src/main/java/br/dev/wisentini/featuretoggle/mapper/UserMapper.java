@@ -1,8 +1,8 @@
-package br.dev.wisentini.featuretoggle.mapper.user;
+package br.dev.wisentini.featuretoggle.mapper;
 
-import br.dev.wisentini.featuretoggle.dto.user.UserCreationDTO;
-import br.dev.wisentini.featuretoggle.dto.user.UserRetrievalDTO;
-import br.dev.wisentini.featuretoggle.model.user.User;
+import br.dev.wisentini.featuretoggle.dto.UserCreationDTO;
+import br.dev.wisentini.featuretoggle.dto.UserRetrievalDTO;
+import br.dev.wisentini.featuretoggle.model.User;
 
 import org.springframework.stereotype.Component;
 

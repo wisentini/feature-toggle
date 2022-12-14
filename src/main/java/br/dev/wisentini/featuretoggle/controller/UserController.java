@@ -1,9 +1,9 @@
-package br.dev.wisentini.featuretoggle.controller.user;
+package br.dev.wisentini.featuretoggle.controller;
 
-import br.dev.wisentini.featuretoggle.dto.user.UserCreationDTO;
-import br.dev.wisentini.featuretoggle.dto.user.UserRetrievalDTO;
-import br.dev.wisentini.featuretoggle.dto.user.UserUpdateDTO;
-import br.dev.wisentini.featuretoggle.service.user.UserService;
+import br.dev.wisentini.featuretoggle.dto.UserCreationDTO;
+import br.dev.wisentini.featuretoggle.dto.UserRetrievalDTO;
+import br.dev.wisentini.featuretoggle.dto.UserUpdateDTO;
+import br.dev.wisentini.featuretoggle.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

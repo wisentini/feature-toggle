@@ -1,13 +1,13 @@
-package br.dev.wisentini.featuretoggle.service.user;
+package br.dev.wisentini.featuretoggle.service;
 
-import br.dev.wisentini.featuretoggle.dto.user.UserCreationDTO;
-import br.dev.wisentini.featuretoggle.dto.user.UserRetrievalDTO;
-import br.dev.wisentini.featuretoggle.dto.user.UserUpdateDTO;
+import br.dev.wisentini.featuretoggle.dto.UserCreationDTO;
+import br.dev.wisentini.featuretoggle.dto.UserRetrievalDTO;
+import br.dev.wisentini.featuretoggle.dto.UserUpdateDTO;
 import br.dev.wisentini.featuretoggle.exception.MissingFieldsException;
 import br.dev.wisentini.featuretoggle.exception.ResourceNotFoundException;
-import br.dev.wisentini.featuretoggle.mapper.user.UserMapper;
-import br.dev.wisentini.featuretoggle.model.user.User;
-import br.dev.wisentini.featuretoggle.repository.user.UserRepository;
+import br.dev.wisentini.featuretoggle.mapper.UserMapper;
+import br.dev.wisentini.featuretoggle.model.User;
+import br.dev.wisentini.featuretoggle.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

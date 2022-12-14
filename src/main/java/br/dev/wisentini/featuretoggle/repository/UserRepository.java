@@ -1,6 +1,6 @@
-package br.dev.wisentini.featuretoggle.repository.user;
+package br.dev.wisentini.featuretoggle.repository;
 
-import br.dev.wisentini.featuretoggle.model.user.User;
+import br.dev.wisentini.featuretoggle.model.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

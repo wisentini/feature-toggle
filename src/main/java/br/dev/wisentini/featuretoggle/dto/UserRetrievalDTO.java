@@ -1,4 +1,4 @@
-package br.dev.wisentini.featuretoggle.dto.user;
+package br.dev.wisentini.featuretoggle.dto;
 
 import lombok.*;
 

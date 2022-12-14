@@ -1,4 +1,4 @@
-package br.dev.wisentini.featuretoggle.model.user;
+package br.dev.wisentini.featuretoggle.model;
 
 import lombok.*;
 
