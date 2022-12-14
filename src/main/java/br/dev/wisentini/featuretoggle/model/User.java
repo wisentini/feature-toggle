@@ -1,6 +1,10 @@
 package br.dev.wisentini.featuretoggle.model;
 
+import br.dev.wisentini.featuretoggle.dto.UserUpdateDTO;
+
 import lombok.*;
+
+import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
 
@@ -32,4 +36,16 @@ public class User {
 
     @Column(name = "updated_at")
     private LocalDate updatedAt;
+
+    public void update(@NonNull UserUpdateDTO userUpdateDTO) {
+        userUpdateDTO.validate();
+
+        if (StringUtils.isNotBlank(userUpdateDTO.getName())) {
+            this.name = userUpdateDTO.getName();
+        }
+
+        if (StringUtils.isNotBlank(userUpdateDTO.getPassword())) {
+            this.password = userUpdateDTO.getPassword();
+        }
+    }
 }

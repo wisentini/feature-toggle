@@ -4,12 +4,9 @@ import br.dev.wisentini.featuretoggle.dto.UserCreationDTO;
 import br.dev.wisentini.featuretoggle.dto.UserRetrievalDTO;
 import br.dev.wisentini.featuretoggle.model.User;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class UserMapper {
 
-    public UserRetrievalDTO toUserRetrievalDTO(User user) {
+    public static UserRetrievalDTO toUserRetrievalDTO(User user) {
         return new UserRetrievalDTO(
             user.getId(),
             user.getName(),
@@ -18,7 +15,7 @@ public class UserMapper {
         );
     }
 
-    public User toUser(UserCreationDTO userCreationDTO) {
+    public static User toUser(UserCreationDTO userCreationDTO) {
         return new User(
             null,
             userCreationDTO.getName(),
