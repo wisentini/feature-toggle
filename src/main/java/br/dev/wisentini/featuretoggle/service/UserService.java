@@ -50,6 +50,8 @@ public class UserService {
     }
 
     public void save(UserCreationDTO userCreationDTO) {
+        userCreationDTO.validate();
+
         this.userRepository.save(UserMapper.toUser(userCreationDTO));
     }
 
