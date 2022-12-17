@@ -7,14 +7,13 @@ import br.dev.wisentini.featuretoggle.exception.ResourceNotFoundException;
 import br.dev.wisentini.featuretoggle.model.User;
 import br.dev.wisentini.featuretoggle.repository.UserRepository;
 
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 
@@ -42,7 +41,7 @@ public class UserServiceTest {
         int userId = 21;
         User user = new User(userId, "Marcos", "abacaxi", LocalDate.now(), null);
 
-        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(this.userRepository.findById(userId)).thenReturn(Optional.of(user));
 
         assertDoesNotThrow(() -> this.userService.findById(userId));
     }
@@ -76,6 +75,40 @@ public class UserServiceTest {
         when(this.userRepository.findAll()).thenReturn(users);
 
         assertDoesNotThrow(() -> this.userService.findAll());
+    }
+
+    @Test
+    void shouldCreateUserWhenNameAndPasswordAreProvided() {
+        String userName = "Fernanda";
+        String userPassword = "banana";
+
+        UserCreationDTO userCreationDTO = new UserCreationDTO(userName, userPassword);
+        User user = new User(777, userName, userPassword, LocalDate.now(), null);
+
+        when(this.userRepository.save(user)).thenReturn(user);
+
+        assertDoesNotThrow(() -> this.userService.save(userCreationDTO));
+    }
+
+    @Test
+    void shouldThrowMissingFieldsExceptionWhenOnlyNameIsProvidedOnCreation() {
+        UserCreationDTO userCreationDTO = new UserCreationDTO("Fernanda", null);
+
+        assertThrows(MissingFieldsException.class, () -> this.userService.save(userCreationDTO));
+    }
+
+    @Test
+    void shouldThrowMissingFieldsExceptionWhenOnlyPasswordIsProvidedOnCreation() {
+        UserCreationDTO userCreationDTO = new UserCreationDTO(null, "banana");
+
+        assertThrows(MissingFieldsException.class, () -> this.userService.save(userCreationDTO));
+    }
+
+    @Test
+    void shouldThrowMissingFieldsExceptionWhenNameOrPasswordAreNotProvidedOnCreation() {
+        UserCreationDTO userCreationDTO = new UserCreationDTO();
+
+        assertThrows(MissingFieldsException.class, () -> this.userService.save(userCreationDTO));
     }
 
     @Test
@@ -118,7 +151,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void shouldThrowMissingFieldsExceptionWhenNameAndPasswordAreNotProvided() {
+    void shouldThrowMissingFieldsExceptionWhenNameAndPasswordAreNotProvidedOnUpdate() {
         int userId = 34;
         User user = new User(userId, "Marcos", "polenta", LocalDate.now(), null);
         UserUpdateDTO userUpdateDTO = new UserUpdateDTO();
@@ -128,5 +161,25 @@ public class UserServiceTest {
         when(this.userRepository.save(user)).thenReturn(user);
 
         assertThrows(MissingFieldsException.class, () -> this.userService.update(userId, userUpdateDTO));
+    }
+
+    @Test
+    void shouldDeleteUserByIdWhenItExists() {
+        int userId = 33;
+
+        when(this.userRepository.existsById(userId)).thenReturn(true);
+
+        doNothing().when(this.userRepository).deleteById(userId);
+
+        assertDoesNotThrow(() -> this.userService.deleteById(userId));
+    }
+
+    @Test
+    void shouldThrowResourceNotFoundExceptionWhenUserToDeleteDoesNotExists() {
+        int userId = 646;
+
+        when(this.userRepository.existsById(userId)).thenReturn(false);
+
+        assertThrows(ResourceNotFoundException.class, () -> this.userService.deleteById(userId));
     }
 }
