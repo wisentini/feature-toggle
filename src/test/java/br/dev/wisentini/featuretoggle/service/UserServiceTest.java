@@ -17,7 +17,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDate;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,15 +61,6 @@ public class UserServiceTest {
             new User(2434, "Maria", "uva", LocalDate.now().minusDays(6741), LocalDate.now()),
             new User(6968, "Pedro", "maçã", LocalDate.now().minusDays(457), LocalDate.now().minusDays(8))
         );
-
-        when(this.userRepository.findAll()).thenReturn(users);
-
-        assertDoesNotThrow(() -> this.userService.findAll());
-    }
-
-    @Test
-    void shouldReturnEmptyListWhenNoUserIsFound() {
-        List<User> users = new ArrayList<>();
 
         when(this.userRepository.findAll()).thenReturn(users);
 
