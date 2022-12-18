@@ -40,13 +40,13 @@ public class UserService {
     }
 
     public void update(int id, UserUpdateDTO userUpdateDTO) {
-        User oldUser = this.userRepository.findById(id).orElseThrow(() -> {
+        User user = this.userRepository.findById(id).orElseThrow(() -> {
             throw new ResourceNotFoundException(String.format("User with ID %d not found.", id));
         });
 
-        oldUser.update(userUpdateDTO);
+        user.update(userUpdateDTO);
 
-        this.userRepository.save(oldUser);
+        this.userRepository.save(user);
     }
 
     public void save(UserCreationDTO userCreationDTO) {
