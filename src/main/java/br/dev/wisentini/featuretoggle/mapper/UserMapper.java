@@ -21,6 +21,7 @@ public class UserMapper {
             userCreationDTO.getName(),
             userCreationDTO.getPassword(),
             null,
+            null,
             null
         );
     }
