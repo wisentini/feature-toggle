@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import javax.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity(name = "user")
 @Table(name = "user", schema = "public")
@@ -36,6 +37,13 @@ public class User {
 
     @Column(name = "updated_at")
     private LocalDate updatedAt;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "responsible", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Feature> features;
+
+    public User(Integer id, String name, String password, LocalDate createdAt, LocalDate updatedAt) {
+        this(id, name, password, createdAt, updatedAt, null);
+    }
 
     public void update(@NonNull UserUpdateDTO userUpdateDTO) {
         userUpdateDTO.validate();
