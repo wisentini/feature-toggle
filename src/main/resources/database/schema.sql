@@ -19,16 +19,15 @@ CREATE TABLE IF NOT EXISTS "user" (
 );
 
 CREATE TABLE IF NOT EXISTS feature (
-    feature_id     INT          NOT NULL GENERATED ALWAYS AS IDENTITY,
-    name           VARCHAR(255) NOT NULL,
-    is_active      BOOLEAN      NOT NULL,
-    responsible_id INT              NULL,
-    password       VARCHAR(255) NOT NULL,
-    created_at     DATE         NOT NULL DEFAULT CURRENT_DATE,
-    updated_at     DATE             NULL,
+    feature_id  INT          NOT NULL GENERATED ALWAYS AS IDENTITY,
+    name        VARCHAR(255) NOT NULL,
+    active      BOOLEAN      NOT NULL,
+    responsible INT              NULL,
+    created_at  DATE         NOT NULL DEFAULT CURRENT_DATE,
+    updated_at  DATE             NULL,
 
     PRIMARY KEY (feature_id),
-    FOREIGN KEY (responsible_id) REFERENCES "user" (user_id)
+    FOREIGN KEY (responsible) REFERENCES "user" (user_id) ON DELETE CASCADE
 );
 
 CREATE OR REPLACE FUNCTION fn_update_updated_at_column() RETURNS TRIGGER AS

@@ -9,6 +9,6 @@ INSERT INTO "user" (name, password) VALUES ('Henrique', 'melancia6');
 INSERT INTO "user" (name, password) VALUES ('Carol', 'manga10');
 INSERT INTO "user" (name, password) VALUES ('Maria', 'melão8');
 
-INSERT INTO feature (name, is_active, password) VALUES ('Pagamento à vista', TRUE, 'admin123');
-INSERT INTO feature (name, is_active, password) VALUES ('Visualização hierárquica dos dados', FALSE, 'qwerty78');
-INSERT INTO feature (name, is_active, password) VALUES ('Promoção ao usar cupom de desconto', FALSE, 'foobar99');
+INSERT INTO feature (name, active) VALUES ('Pagamento à vista', TRUE);
+INSERT INTO feature (name, active) VALUES ('Visualização hierárquica dos dados', FALSE);
+INSERT INTO feature (name, active) VALUES ('Promoção ao usar cupom de desconto', FALSE);
